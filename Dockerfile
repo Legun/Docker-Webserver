@@ -1,5 +1,5 @@
     # Pull base image.
-    FROM dockerfile/centos
+    FROM centos
 
     RUN yum install git
 
