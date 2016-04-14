@@ -1,11 +1,12 @@
     # Pull base image.
     FROM dockerfile/centos
 
-    
+    RUN yum install git
+
     RUN  yum install epel-release
     RUN  yum install httpd
 
-    RUN cd /etc/httpd/conf/ && sed 's/Listen 80/Listen 88/g' httpd.conf
+    RUN cd /etc/httpd/conf/ && sed 's/Listen 80/Listen 8080/g' /etc/httpd/conf/httpd.conf
     
     RUN rpm -Uvh https://mirror.webtatic.com/yum/el7/epel-release.rpm
     RUN rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
@@ -15,6 +16,8 @@
 
 
     RUN yum install nginx
+
+    RUN wget https://raw.githubusercontent.com/Legun/Docker-Webserver/master/nginx.conf -O /etc/nginx/nginx.conf
 
 
 
@@ -35,3 +38,4 @@
     # Expose ports.
     EXPOSE 80
     EXPOSE 443
+    EXPOSE 8080
