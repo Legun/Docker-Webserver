@@ -1,7 +1,7 @@
     # Pull base image.
     FROM centos
 
-    RUN yum install git
+    
 
     RUN  yum install epel-release
     RUN  yum install httpd
@@ -16,6 +16,7 @@
 
 
     RUN yum install nginx
+    RUN yum install git
 
     RUN wget https://raw.githubusercontent.com/Legun/Docker-Webserver/master/nginx.conf -O /etc/nginx/nginx.conf
 
